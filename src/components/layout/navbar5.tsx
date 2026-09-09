@@ -1,22 +1,17 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/vendors/ui/accordion";
 import { Button } from "@/vendors/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/vendors/ui/navigation-menu";
 import {
   Sheet,
@@ -31,185 +26,117 @@ interface Navbar5Props {
   className?: string;
 }
 
+const navLinks = [
+  { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
+  { title: "Experience", href: "/experience" },
+  { title: "Projects", href: "/projects" },
+  { title: "Research", href: "/research" },
+  { title: "Publications", href: "/publications" },
+  { title: "Skills", href: "/skills" },
+  { title: "Achievements", href: "/achievements" },
+  { title: "Certificates", href: "/certificates" },
+  { title: "Contact", href: "/contact" },
+];
+
 const Navbar5 = ({ className }: Navbar5Props) => {
-  const features = [
-    {
-      title: "Dashboard",
-      description: "Overview of your activity",
-      href: "#",
-    },
-    {
-      title: "Analytics",
-      description: "Track your performance",
-      href: "#",
-    },
-    {
-      title: "Settings",
-      description: "Configure your preferences",
-      href: "#",
-    },
-    {
-      title: "Integrations",
-      description: "Connect with other tools",
-      href: "#",
-    },
-    {
-      title: "Storage",
-      description: "Manage your files",
-      href: "#",
-    },
-    {
-      title: "Support",
-      description: "Get help when needed",
-      href: "#",
-    },
-  ];
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className={cn("py-5 lg:py-6", className)}>
+    <section className={cn("py-4 lg:py-5 border-b border-border/40 bg-background/95 backdrop-blur-xs sticky top-0 z-40", className)}>
       <div className="container">
         <nav className="flex items-center justify-between">
-          <a
-            href="https://www.shadcnblocks.com"
-            className="flex items-center gap-3"
+          <Link
+            href="/"
+            className="flex items-center gap-2 group transition-colors shrink-0"
           >
-            <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-              className="h-10 w-auto lg:h-11"
-              alt="Shadcn UI Navbar"
-            />
-            <span className="text-2xl font-extrabold tracking-tight lg:text-3xl">
-              Shadcnblocks.com
+            <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors lg:text-2xl">
+              Alfredo soprana
             </span>
-          </a>
+          </Link>
+
           <NavigationMenu className="hidden lg:block">
-            <NavigationMenuList className="gap-1 lg:gap-2">
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-lg font-semibold lg:text-xl">
-                  Features
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[650px] grid-cols-2 p-4">
-                    {features.map((feature, index) => (
-                      <NavigationMenuLink
-                        href={feature.href}
-                        key={index}
-                        className="rounded-lg p-3.5 transition-colors hover:bg-muted/70"
-                      >
-                        <div key={feature.title}>
-                          <p className="mb-1 text-lg font-bold text-foreground">
-                            {feature.title}
-                          </p>
-                          <p className="text-base text-muted-foreground">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </NavigationMenuLink>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={cn(navigationMenuTriggerStyle(), "text-lg font-semibold lg:text-xl")}
-                >
-                  Products
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={cn(navigationMenuTriggerStyle(), "text-lg font-semibold lg:text-xl")}
-                >
-                  Resources
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  href="#"
-                  className={cn(navigationMenuTriggerStyle(), "text-lg font-semibold lg:text-xl")}
-                >
-                  Contact
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+            <NavigationMenuList className="gap-0.5 xl:gap-1">
+              {navLinks.map((item) => {
+                const isActive =
+                  pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href));
+
+                return (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink
+                      render={<Link href={item.href} />}
+                      className={cn(
+                        "px-2 py-1.5 text-xs xl:text-sm font-medium rounded-md transition-colors",
+                        isActive
+                          ? "bg-muted text-foreground font-semibold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                      )}
+                    >
+                      {item.title}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                );
+              })}
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="hidden items-center gap-4 lg:flex">
-            <Button variant="outline" className="h-12 px-6 text-lg font-semibold rounded-lg">
-              Sign in
-            </Button>
-            <Button className="h-12 px-6 text-lg font-semibold rounded-lg">
-              Start for free
-            </Button>
+
+          <div className="hidden items-center gap-3 lg:flex shrink-0">
+            <ThemeToggle />
           </div>
-          <Sheet>
-            <SheetTrigger className="lg:hidden" render={<Button variant="outline" size="icon" className="size-10" />}><MenuIcon className="h-5 w-5" /></SheetTrigger>
-            <SheetContent side="top" className="max-h-screen overflow-auto">
-              <SheetHeader>
+
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger
+              className="lg:hidden"
+              render={
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="size-10"
+                  aria-label="Open menu"
+                />
+              }
+            >
+              <MenuIcon className="h-5 w-5" />
+            </SheetTrigger>
+            <SheetContent side="top" className="max-h-[90vh] overflow-y-auto p-6">
+              <SheetHeader className="pb-4 border-b border-border/40">
                 <SheetTitle>
-                  <a
-                    href="https://www.shadcnblocks.com"
-                    className="flex items-center gap-2.5"
+                  <Link
+                    href="/"
+                    onClick={() => setIsOpen(false)}
+                    className="text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors"
                   >
-                    <img
-                      src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-                      className="h-8 w-auto"
-                      alt="Shadcn UI Navbar"
-                    />
-                    <span className="text-xl font-bold tracking-tight">
-                      Shadcnblocks.com
-                    </span>
-                  </a>
+                    Alfredo soprana
+                  </Link>
                 </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col p-4">
-                <Accordion className="mt-4 mb-2">
-                  <AccordionItem value="solutions" className="border-none">
-                    <AccordionTrigger className="text-lg font-medium hover:no-underline">
-                      Features
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="grid md:grid-cols-2">
-                        {features.map((feature, index) => (
-                          <a
-                            href={feature.href}
-                            key={index}
-                            className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                          >
-                            <div key={feature.title}>
-                              <p className="mb-1 text-base font-semibold text-foreground">
-                                {feature.title}
-                              </p>
-                              <p className="text-sm text-muted-foreground">
-                                {feature.description}
-                              </p>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-                <div className="flex flex-col gap-5 text-base font-medium">
-                  <a href="#" className="font-medium hover:text-foreground transition-colors">
-                    Templates
-                  </a>
-                  <a href="#" className="font-medium hover:text-foreground transition-colors">
-                    Blog
-                  </a>
-                  <a href="#" className="font-medium hover:text-foreground transition-colors">
-                    Pricing
-                  </a>
-                </div>
-                <div className="mt-6 flex flex-col gap-3">
-                  <Button variant="outline" size="lg" className="w-full text-base">
-                    Sign in
-                  </Button>
-                  <Button size="lg" className="w-full text-base">
-                    Start for free
-                  </Button>
-                </div>
+              <div className="flex flex-col gap-1 py-4">
+                {navLinks.map((item) => {
+                  const isActive =
+                    pathname === item.href ||
+                    (item.href !== "/" && pathname.startsWith(item.href));
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        "flex items-center px-3 py-2.5 rounded-lg text-base font-medium transition-colors",
+                        isActive
+                          ? "bg-muted text-foreground font-semibold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      )}
+                    >
+                      {item.title}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="pt-4 border-t border-border/40 flex flex-col gap-3">
+                <ThemeToggle className="w-full justify-center" />
               </div>
             </SheetContent>
           </Sheet>

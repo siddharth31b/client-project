@@ -4,27 +4,37 @@
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 1.25rem;
   width: 100%;
 
   @variant sm {
     padding-inline: 2rem;
-    max-width: 100%;
   }
   @variant md {
-    max-width: 100%;
+    padding-inline: 2.5rem;
   }
   @variant lg {
-    max-width: 100%;
+    padding-inline: 3rem;
   }
   @variant xl {
+    padding-inline: 3.5rem;
     max-width: 100%;
   }
   @media (width >= 1400px) {
-    max-width: 1400px;
+    padding-inline: 4rem;
+    max-width: 100%;
   }
-  @variant 2xl {
-    max-width: 1400px;
+  @media (width >= 1600px) {
+    padding-inline: 4.5rem;
+    max-width: 1680px;
+  }
+  @media (width >= 1920px) {
+    padding-inline: 5rem;
+    max-width: 1840px;
+  }
+  @media (width >= 2560px) {
+    padding-inline: 6rem;
+    max-width: 2200px;
   }
 }
 
@@ -72,6 +82,15 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-line-shadow: line-shadow 15s linear infinite;
+  @keyframes line-shadow {
+  0% {
+    background-position: 0 0;
+    }
+  100% {
+    background-position: 100% -100%;
+    }
+  }
 }
 
 :root {
