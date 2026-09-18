@@ -336,13 +336,25 @@ const Navbar5 = ({ className }: Navbar5Props) => {
             <ThemeToggle />
             <Link
               href="/contact"
-              className={cn(
-                buttonVariants({ size: "sm" }),
-                "h-9 px-3.5 gap-1.5 rounded-lg shadow-xs font-medium text-xs xl:text-sm cursor-pointer"
-              )}
+              className="group relative inline-flex items-center justify-center p-[2px] overflow-hidden rounded-lg font-medium text-xs xl:text-sm cursor-pointer shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span>Get in Touch</span>
-              <ArrowUpRight className="size-3.5" />
+              {/* Outer soft glow that orbits round and round */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-[-1000%] animate-[spin_2.5s_linear_infinite] blur-[3px] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_240deg,#38bdf8_300deg,#ffffff_360deg)] opacity-80 pointer-events-none"
+              />
+
+              {/* Sharp crisp beam that orbits round and round */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-[-1000%] animate-[spin_2.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_240deg,#38bdf8_300deg,#ffffff_360deg)] pointer-events-none"
+              />
+
+              {/* Inner button content */}
+              <span className="relative z-10 inline-flex items-center gap-1.5 h-[32px] px-3.5 rounded-[calc(0.5rem-2px)] bg-neutral-950 text-white dark:bg-zinc-900 dark:text-white border border-white/10 font-medium transition-colors group-hover:bg-neutral-900 dark:group-hover:bg-zinc-800">
+                <span>Get in Touch</span>
+                <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
             </Link>
           </div>
 
@@ -422,13 +434,25 @@ const Navbar5 = ({ className }: Navbar5Props) => {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className={cn(
-                    buttonVariants({ variant: "default" }),
-                    "w-full justify-center gap-1.5 h-10 rounded-lg cursor-pointer"
-                  )}
+                  className="group relative inline-flex items-center justify-center p-[2px] overflow-hidden rounded-lg font-medium text-sm cursor-pointer shadow-sm w-full transition-all duration-300"
                 >
-                  <Mail className="size-4" />
-                  <span>Get in Touch / Contact</span>
+                  {/* Outer soft glow that orbits round and round */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-[-1000%] animate-[spin_2.5s_linear_infinite] blur-[3px] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_240deg,#38bdf8_300deg,#ffffff_360deg)] opacity-80 pointer-events-none"
+                  />
+
+                  {/* Sharp crisp beam that orbits round and round */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-[-1000%] animate-[spin_2.5s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_240deg,#38bdf8_300deg,#ffffff_360deg)] pointer-events-none"
+                  />
+
+                  {/* Inner button content */}
+                  <span className="relative z-10 inline-flex items-center justify-center gap-2 h-[36px] w-full px-4 rounded-[calc(0.5rem-2px)] bg-neutral-950 text-white dark:bg-zinc-900 dark:text-white border border-white/10 font-medium transition-colors group-hover:bg-neutral-900 dark:group-hover:bg-zinc-800">
+                    <Mail className="size-4" />
+                    <span>Get in Touch / Contact</span>
+                  </span>
                 </Link>
                 <ThemeToggle showLabel className="w-full justify-center" />
               </div>
