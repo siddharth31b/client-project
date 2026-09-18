@@ -1,48 +1,74 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, FileText, ScrollText } from "lucide-react";
+import { ArrowRight, BookOpen, FileText } from "lucide-react";
 
-import { List2 } from "@/components/section/list2";
-import { Cta41 } from "@/components/section/cta41";
+import { List2, ListItem } from "@/components/section/list2";
 
 export const metadata: Metadata = {
-  title: "Publications | Alfredo Soprana",
+  title: "Publications | Subhash Chandra Pal",
   description:
-    "Academic papers, peer-reviewed publications, technical reports, and preprints by Alfredo Soprana.",
+    "Peer-reviewed journal articles and conference papers in neurovascular image analysis, deep learning, and medical AI by Subhash Chandra Pal.",
 };
 
-const publicationItems = [
+const journalArticles: ListItem[] = [
   {
-    icon: <FileText className="size-6 text-foreground" />,
-    title: "Scalable Intelligent Systems",
-    category: "Journal Article",
+    icon: <FileText className="size-6 text-primary" />,
+    title: "Computer‐Aided Volumetric Quantification of Pre‐and Post‐Treatment Intracranial Aneurysms in MRA",
+    category: "IET Image Processing • Vol. 19, Iss. 1, e70199 (2025)",
     description:
-      "Architectural patterns and paradigms for distributed low-latency inference in mission-critical applications.",
-    link: "/research",
+      "Pal, Subhash Chandra, Chirag Kamal Ahuja, Dimitrios Toumpanakis, Johan Wikstrom, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
   },
   {
-    icon: <BookOpen className="size-6 text-foreground" />,
-    title: "Computational Efficiency & Optimization",
-    category: "Conference Paper",
+    icon: <FileText className="size-6 text-primary" />,
+    title: "Computationally efficient dilated residual networks for segmentation of major cerebral vessels in MRA",
+    category: "Network Modeling Analysis in Health Informatics and Bioinformatics • Vol. 14, Iss. 1, Art. 95 (2025)",
     description:
-      "Techniques for runtime performance optimization and cache locality across heterogeneous compute clusters.",
-    link: "/research",
+      "Pal, Subhash Chandra, Chirag Kamal Ahuja, Dimitrios Toumpanakis, Johan Wikstrom, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
   },
   {
-    icon: <ScrollText className="size-6 text-foreground" />,
-    title: "Zero-Trust Data Protection Protocols",
-    category: "Technical Report",
+    icon: <FileText className="size-6 text-primary" />,
+    title: "Machine learning analysis of integrated ABP and PPG signals towards early detection of coronary artery disease",
+    category: "Scientific Reports (Nature Portfolio) • Vol. 15, Iss. 1, pp. 1–9 (2025)",
     description:
-      "Empirical evaluation of cryptographic boundaries and biometric state validation for mobile financial infrastructure.",
-    link: "/research",
+      "Amandeep Minhas, Subhash Chandra Pal, and Karan Jain.",
+    link: "/contact",
   },
   {
-    icon: <FileText className="size-6 text-foreground" />,
-    title: "Resilient Distributed Collaboration Systems",
-    category: "Preprint",
+    icon: <FileText className="size-6 text-primary" />,
+    title: "Multi-level residual dual attention network for major cerebral arteries segmentation in MRA toward diagnosis of cerebrovascular disorders",
+    category: "IEEE Transactions on NanoBioscience • Vol. 23, Iss. 1, pp. 167–175 (2023)",
     description:
-      "Operational transformation and state convergence models for multi-tenant real-time workspaces.",
-    link: "/research",
+      "Subhash Chandra Pal, Dimitrios Toumpanakis, Johan Wikström, Chirag Kamal Ahuja, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
+  },
+];
+
+const conferencePapers: ListItem[] = [
+  {
+    icon: <BookOpen className="size-6 text-chart-1" />,
+    title: "Automated Segmentation of Post-Treatment Intracranial Aneurysms from MRA Images: A U-Net based Approach",
+    category: "2024 IEEE 21st India Council International Conference (INDICON) • pp. 1–5, IEEE (2024)",
+    description:
+      "Pal, Subhash Chandra, Dimitrios Toumpanakis, Johan Wikström, Chirag Kamal Ahuja, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
+  },
+  {
+    icon: <BookOpen className="size-6 text-chart-1" />,
+    title: "Context-Aware Preprocessing Method for Reduction of Volume of Interest Towards Quantification of Pre and Post-treatment Intracranial Aneurysms in MRA",
+    category: "International Conference on Pattern Recognition (ICPR) • pp. 233–242, Springer Nature Switzerland (2024)",
+    description:
+      "Pal, Subhash Chandra, Dimitrios Toumpanakis, Johan Wikström, Chirag Kamal Ahuja, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
+  },
+  {
+    icon: <BookOpen className="size-6 text-chart-1" />,
+    title: "Segmentation of major cerebral vessel from mra images and evaluation using u-net family",
+    category: "2022 IEEE 6th International Conference on Condition Assessment Techniques in Electrical Systems (CATCON) • pp. 235–238, IEEE (2022)",
+    description:
+      "Pal, Subhash Chandra, Subhashis Banerjee, Dimitrios Toumpanakis, Johan Wikström, Robin Strand, and Ashis Kumar Dhara.",
+    link: "/contact",
   },
 ];
 
@@ -54,46 +80,30 @@ export default function PublicationsPage() {
         <div className="container">
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-medium text-primary">
-              <span>Scholarly Output</span>
+              <span>Peer-Reviewed Research</span>
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Publications & Papers
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A curated index of peer-reviewed articles, conference proceedings, preprints, and formal technical manuscripts.
+              Documented scholarly output across leading international journals and IEEE / Springer conferences in medical imaging, deep learning, and neurovascular diagnostics.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 2. Publication Filter Categories */}
-      <section className="py-8 border-b border-border/40">
-        <div className="container">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-primary px-3.5 py-1 text-xs font-semibold text-primary-foreground">
-              All Publications
-            </span>
-            <span className="rounded-full bg-muted px-3.5 py-1 text-xs font-medium text-muted-foreground">
-              Journal Articles
-            </span>
-            <span className="rounded-full bg-muted px-3.5 py-1 text-xs font-medium text-muted-foreground">
-              Conference Papers
-            </span>
-            <span className="rounded-full bg-muted px-3.5 py-1 text-xs font-medium text-muted-foreground">
-              Technical Reports
-            </span>
-            <span className="rounded-full bg-muted px-3.5 py-1 text-xs font-medium text-muted-foreground">
-              Preprints
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Publication List */}
+      {/* 2. Journal Articles */}
       <List2
-        heading="Selected Bibliography"
-        buttonText="View Research"
-        items={publicationItems}
+        heading="Journal Articles"
+        buttonText="Inquire / Cite"
+        items={journalArticles}
+      />
+
+      {/* 3. Conference Papers */}
+      <List2
+        heading="Conference Proceedings"
+        buttonText="Inquire / Cite"
+        items={conferencePapers}
       />
 
       {/* 4. Research Connection Section */}
@@ -101,10 +111,10 @@ export default function PublicationsPage() {
         <div className="container flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <h3 className="text-xl font-bold text-foreground">
-              Interested in the Underlying Research Domains?
+              Interested in the Underlying Methodologies?
             </h3>
             <p className="text-sm text-muted-foreground">
-              Explore our core methodologies, experimental investigations, and technical areas of interest.
+              Explore our core deep learning architectures, MRA image preprocessing, and clinical validation.
             </p>
           </div>
           <Link
@@ -116,22 +126,6 @@ export default function PublicationsPage() {
           </Link>
         </div>
       </section>
-
-      {/* 5. Final CTA */}
-      <Cta41
-        heading="Request Paper or Discussion"
-        description="Interested in replication data, citing our work, or discussing methodology? Reach out directly."
-        buttons={{
-          primary: {
-            text: "Contact Author",
-            url: "/contact",
-          },
-          secondary: {
-            text: "Explore Research",
-            url: "/research",
-          },
-        }}
-      />
     </main>
   );
 }

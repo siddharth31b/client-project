@@ -8,9 +8,9 @@ import { Button } from "@/vendors/ui/button";
 import { cn } from "@/lib/utils";
 
 const defaultHeadingLines = [
-  "Embracing the Wild",
-  "A Visual Storytelling Experience",
-  "Through Nature",
+  "AI for Neurovascular",
+  "Imaging & Clinical",
+  "Diagnostic Insight",
 ];
 
 const maskReveal = {
@@ -44,14 +44,14 @@ export interface Project12Props {
 const Project12 = ({
   className,
   headingLines = defaultHeadingLines,
-  description = "This project explores the serene beauty of forests, rivers, and mountains through immersive photography and design. It's a celebration of Earth’s untouched wonders — aiming to reconnect people with the natural world.",
+  description = "Investigating deep learning architectures and quantitative radiomics for non-invasive detection, segmentation, and volumetric monitoring of intracranial aneurysms and major cerebral vessels in magnetic resonance angiography (MRA).",
   metadata = [
-    ["Year", "2025"],
-    ["Project", "Nature Documentary Web Experience"],
-    ["Photographer", "Lummi Trails"],
+    ["Focus", "Neurovascular Image Analysis"],
+    ["Domain", "Deep Learning & MRA Segmentation"],
+    ["Affiliation", "IIT Mandi iHUB & HCI Foundation"],
   ],
   imageSrc = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/pat-whelen-gWfpmH0H2bM-unsplash.jpg",
-  imageAlt = "Nature Landscape",
+  imageAlt = "Neurovascular Image Analysis and AI Research",
   showBackButton = false,
   backHref = "/research",
   backLabel = "Back",
@@ -82,7 +82,7 @@ const Project12 = ({
 
             <div className="space-y-2 overflow-hidden">
               {headingLines.map((line, i) => (
-                <motion.h1
+                <motion.h2
                   key={i}
                   className="text-3xl leading-tight font-bold text-foreground md:text-4xl lg:text-5xl"
                   initial="hidden"
@@ -95,7 +95,7 @@ const Project12 = ({
                   }}
                 >
                   {line}
-                </motion.h1>
+                </motion.h2>
               ))}
             </div>
           </div>

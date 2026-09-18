@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Stethoscope } from "lucide-react";
 
 const LEFT = "M0,54 L54,54 Q60,54 60,60 L60,74 Q60,80 66,80 L230,80";
 const RIGHT = "M308,80 L472,80 Q478,80 478,86 L478,100 Q478,106 484,106 L538,106";
@@ -8,9 +9,9 @@ const RIGHT = "M308,80 L472,80 Q478,80 478,86 L478,100 Q478,106 484,106 L538,106
 export function Bento53Tile2() {
   return (
     <div className="@container flex min-h-79 flex-col overflow-hidden p-6">
-      <h3 className="text-xl font-bold text-foreground">For growing teams</h3>
+      <h3 className="text-xl font-bold text-foreground">Translational Clinical Integration</h3>
       <p className="mt-2 text-sm text-muted-foreground">
-        Tailored support to give you progress
+        Bridging algorithmic innovation with clinical neurovascular workflows
       </p>
 
       <div className="relative -mx-6 mt-auto h-40">
@@ -53,13 +54,9 @@ export function Bento53Tile2() {
         />
 
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-border/50 bg-muted/50 px-5 py-4">
-          <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/bento/bento53-block2envelope.svg"
-            alt=""
-            className="size-4.5 shrink-0"
-          />
+          <Stethoscope className="size-4 text-primary shrink-0" />
           <span className="whitespace-nowrap font-mono text-xs font-medium text-foreground">
-            Invite user to this team
+            Clinical Decision Support Pipeline
           </span>
         </div>
       </div>

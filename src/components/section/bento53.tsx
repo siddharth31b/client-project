@@ -7,36 +7,45 @@ import { cn } from "@/lib/utils";
 
 interface Bento53Props {
   className?: string;
+  asSection?: boolean;
 }
 
-const Bento53 = ({ className }: Bento53Props) => {
-  return (
-    <section className={cn("bg-background py-12", className)}>
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-6">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="overflow-hidden rounded-xl border border-border/50 bg-card">
-              <Bento53Tile1 />
-            </div>
-            <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
-              <Bento53Tile2 />
-            </div>
+const Bento53 = ({ className, asSection = false }: Bento53Props) => {
+  const content = (
+    <div className="container mx-auto">
+      <div className="flex flex-col gap-6">
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="overflow-hidden rounded-xl border border-border/50 bg-card">
+            <Bento53Tile1 />
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
-              <Bento53Tile3 />
-            </div>
-            <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
-              <Bento53Tile4 />
-            </div>
-            <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
-              <Bento53Tile5 />
-            </div>
+          <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
+            <Bento53Tile2 />
+          </div>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
+            <Bento53Tile3 />
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
+            <Bento53Tile4 />
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
+            <Bento53Tile5 />
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
+
+  if (asSection) {
+    return (
+      <section className={cn("bg-background py-12", className)}>
+        {content}
+      </section>
+    );
+  }
+
+  return <div className={cn("w-full", className)}>{content}</div>;
 };
 
 export { Bento53 };

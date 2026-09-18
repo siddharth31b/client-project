@@ -7,28 +7,21 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-const defaultHeroImage =
-  "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/tiny-home/erik-mclean-g3U7sqtdJ1w-unsplash.jpg";
+import { PROJECTS_DATA } from "@/lib/projects-data";
 
-const defaultGridImages = [
-  "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/tiny-home/erik-mclean-u9-yqtr6YrM-unsplash.jpg",
-  "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/photos/tiny-home/erik-mclean-VEaI2ftIV2M-unsplash.jpg",
-];
+const defaultProject = PROJECTS_DATA[0];
+
+const defaultHeroImage = defaultProject.image;
+const defaultGridImages = defaultProject.galleryImages;
 
 const defaultProjectDetails = [
-  { label: "Client", value: "Private Residence" },
-  { label: "Location", value: "Østfold, Norway" },
-  { label: "Year", value: "2024" },
-  {
-    label: "Scope",
-    value: "Prefab Design, Sustainable Materials, Off-Grid Systems",
-  },
+  { label: "Category", value: defaultProject.category },
+  { label: "Scope", value: defaultProject.scope },
+  { label: "Affiliation", value: defaultProject.client || "NIT Durgapur & Uppsala University" },
+  { label: "Timeline", value: defaultProject.year },
 ];
 
-const defaultParagraphs = [
-  "Nestled among birch and pine on a quiet Norwegian lakeside, this 380 sq ft tiny home distills Scandinavian design to its essence. Light timber framing and triple-glazed windows maximize natural light during long winters, while a compact footprint leaves the surrounding forest undisturbed.",
-  "Every square meter is considered—built-in storage, a fold-down dining table, and a sleeping loft create flexible living without compromise. Heated by a single wood-burning stove and powered by rooftop solar, the retreat operates fully off-grid, embodying the Scandinavian values of simplicity and environmental harmony.",
-];
+const defaultParagraphs = defaultProject.paragraphs;
 
 const FadeUpOnScroll = ({
   children,
@@ -72,11 +65,11 @@ export interface Project1Props {
 
 const Project1 = ({
   className,
-  category = "Project",
-  title = "Nordic Retreat",
-  description = "A minimalist sanctuary that embraces hygge living and the quiet beauty of the Scandinavian forest.",
+  category = defaultProject.category,
+  title = defaultProject.title,
+  description = defaultProject.description,
   heroImage = defaultHeroImage,
-  heroImageAlt = "Project showcase visual",
+  heroImageAlt = "Research project visual preview",
   paragraphs = defaultParagraphs,
   details = defaultProjectDetails,
   galleryImages = defaultGridImages,

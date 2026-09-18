@@ -3,22 +3,22 @@
 import { motion } from "framer-motion";
 
 const PILLS = [
-  "Web 3.0 development",
-  "Growth",
-  "APIs",
-  "Go-to-Market Solutions",
-  "Easy-to-use interface",
-  "Scalable",
-  "Fast Integrations",
-  "Accessibility",
+  "Intracranial Aneurysms",
+  "Cerebral Vessel Segmentation",
+  "Post-Treatment Evaluation",
+  "Volumetric Quantification",
+  "Signal Analysis (ABP & PPG)",
+  "Time-of-Flight MRA",
+  "Deep Residual Networks",
+  "Dual Attention Mechanisms",
 ];
 
 export function Bento53Tile5() {
   return (
     <div className="@container flex min-h-101 flex-col overflow-hidden p-6">
-      <h3 className="text-2xl font-medium text-foreground">Web 3.0 development</h3>
+      <h3 className="text-2xl font-medium text-foreground">Neurovascular Research</h3>
       <p className="mt-2 text-sm text-muted-foreground">
-        Crafting tomorrow's digital landscape today
+        Key focus areas in neurovascular imaging and healthcare AI
       </p>
 
       <div className="mt-auto flex flex-wrap gap-3">

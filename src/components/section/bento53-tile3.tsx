@@ -8,47 +8,29 @@ const O = "text-chart-1";
 const T = "text-chart-2";
 
 const LINES: [string, string][][] = [
-  [["// SPDX-License-Identifier: MIT", C]],
-  [["pragma solidity ^0.8.0;", W]],
+  [["# Neurovascular Segmentation Pipeline", C]],
+  [["import ", O], ["torch", W], ["; ", W], ["import ", O], ["torch.nn ", W], ["as ", O], ["nn", W]],
   [[" ", W]],
-  [["import ", W], ['"./IERC20.sol"', O], [";", W]],
+  [["class ", O], ["ResDualAttentionUNet", T], ["(nn.Module):", W]],
+  [["  def __init__(self, in_channels=1, classes=2):", W]],
+  [["    super().__init__()", W]],
+  [["    self.encoder = ", W], ["DilatedResidualEncoder", T], ["()", W]],
+  [["    self.attention = ", W], ["DualAttentionModule", T], ["()", W]],
+  [["    self.decoder = ", W], ["MultiLevelDecoder", T], ["(classes)", W]],
   [[" ", W]],
-  [["contract MyToken ", W], ["is", T], [" IERC20 {", W]],
-  [["  string public name = ", W], ['"MyToken"', O], [";", W]],
-  [["  string public symbol = ", W], ['"MT"', O], [";", W]],
-  [["  ", W], ["uint256", O], [" public override totalSupply;", W]],
-  [
-    ["  ", W],
-    ["mapping", O],
-    ["(", W],
-    ["address", T],
-    [" => ", W],
-    ["uint256", O],
-    [") public override balanceOf;", W],
-  ],
-  [
-    ["  ", W],
-    ["mapping", O],
-    ["(", W],
-    ["address", T],
-    [" => ", W],
-    ["mapping", O],
-    ["(", W],
-    ["address", T],
-    [" => ", W],
-    ["uint256", O],
-    [")) public override allowance;", W],
-  ],
+  [["  def forward(self, mra_volume):", W]],
+  [["    feat = self.encoder(mra_volume)", W]],
+  [["    return self.decoder(self.attention(feat))", W]],
 ];
 
 export function Bento53Tile3() {
   return (
     <div className="@container flex min-h-101 flex-col overflow-hidden p-6">
       <h3 className="text-xl font-bold text-foreground">
-        Powerful APIs for developers
+        Deep Learning Architectures
       </h3>
       <p className="mt-2 text-sm text-muted-foreground">
-        Seamless Integration for your company
+        Residual Dual-Attention & Dilated U-Net Pipelines
       </p>
 
       <div className="mt-auto font-mono text-xs leading-5">
@@ -58,7 +40,7 @@ export function Bento53Tile3() {
             initial={{ clipPath: "inset(0 100% 0 0)" }}
             whileInView={{ clipPath: "inset(0 0% 0 0)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.35, delay: i * 0.28, ease: "linear" }}
+            transition={{ duration: 0.35, delay: i * 0.15, ease: "linear" }}
             className="whitespace-pre"
           >
             {line.map((tok, j) => (

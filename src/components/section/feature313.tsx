@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 
 import { Button } from "@/vendors/ui/button";
 import { Card } from "@/vendors/ui/card";
+import { BorderGlow } from "./BorderGlow";
 import {
   Dialog,
   DialogContent,
@@ -32,28 +33,28 @@ interface Feature313Props {
 const Feature313 = ({
   className,
   imageSrc = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw6.jpeg",
-  imageAlt = "Creative agency studio preview",
-  videoUrl = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/man-1.mp4", // "https://www.youtube.com/watch?v=3GwjfUFyY6M",
-  videoCaption = "Discover our story",
-  videoSecondaryCaption = "(1:47 Sec)",
+  imageAlt = "Neurovascular Imaging and Medical AI Research",
+  videoUrl = "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/man-1.mp4",
+  videoCaption = "Research Overview & Clinical Insight",
+  videoSecondaryCaption = "(Medical AI)",
   cards = [
     {
-      title: "Innovative strategies that drive real growth",
+      title: "Deep Learning for Neurovascular Imaging & MRA Analysis",
       image:
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
     },
     {
-      title: "User-centric design built on research and insight",
+      title: "Automated Segmentation & Quantification of Intracranial Aneurysms",
       image:
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
     },
     {
-      title: "End-to-end support from concept to delivery",
+      title: "Computationally Efficient Dilated & Dual-Attention Networks",
       image:
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
     },
     {
-      title: "Global partnerships built on trust and transparency",
+      title: "Translational Healthcare AI & Non-Invasive Biomarkers",
       image:
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
     },
@@ -74,37 +75,54 @@ const Feature313 = ({
   return (
     <section className={cn("bg-muted py-24", className)}>
       <div className="container flex flex-col gap-2">
-        <div className="grid grid-cols-1 gap-1 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card, index) => (
-            <Card key={index} className="border-none p-10 shadow-none">
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex gap-1">
-                  {cards.map((card, circleIndex) => (
-                    <div
-                      key={circleIndex}
-                      className={`${index >= circleIndex ? "bg-primary" : "bg-muted"} h-2 w-2 rounded-full`}
+            <BorderGlow
+              key={index}
+              borderRadius={20}
+              glowRadius={36}
+              glowIntensity={1.25}
+              edgeSensitivity={26}
+              glowColor="205 90 70"
+              colors={["#38bdf8", "#818cf8", "#c084fc"]}
+              className="h-full group cursor-pointer transition-all duration-200 hover:-translate-y-1"
+            >
+              <div className="flex flex-col justify-between h-full min-h-[230px] lg:min-h-[250px] p-8 lg:p-10 gap-8">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex gap-1.5 items-center">
+                    {cards.map((_, circleIndex) => (
+                      <div
+                        key={circleIndex}
+                        className={cn(
+                          "h-2 w-2 rounded-full transition-colors",
+                          index >= circleIndex
+                            ? "bg-primary shadow-[0_0_8px_rgba(56,189,248,0.6)]"
+                            : "bg-muted-foreground/30"
+                        )}
+                      />
+                    ))}
+                  </div>
+                  <div className="text-xs font-mono font-medium text-muted-foreground/80 tracking-wider">
+                    0{index + 1}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="size-12 flex-shrink-0 bg-neutral-100 dark:bg-white rounded-xl flex items-center justify-center p-2.5 shadow-xs border border-border/80 dark:border-none ring-1 ring-black/5">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="size-7 object-contain"
                     />
-                  ))}
-                </div>
-                <div className="text-sm font-medium text-muted-foreground">
-                  0{index + 1}
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 md:flex-row md:justify-between">
-                <div className="aspect-square h-12 w-12 flex-shrink-0">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="aspect-square h-full w-full rounded-lg object-cover"
-                  />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-md leading-tight font-medium">
-                    {card.title}
-                  </h3>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-sm lg:text-[15px] font-semibold leading-snug text-foreground tracking-tight">
+                      {card.title}
+                    </h3>
+                  </div>
                 </div>
               </div>
-            </Card>
+            </BorderGlow>
           ))}
         </div>
 

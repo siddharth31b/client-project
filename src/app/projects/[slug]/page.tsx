@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { Project1 } from "@/components/section/project1";
-import { Cta41 } from "@/components/section/cta41";
 import {
   getAllProjects,
   getProjectBySlug,
@@ -33,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${project.title} | Alfredo Soprana`,
+    title: `${project.title} | Subhash Chandra Pal`,
     description: project.description,
   };
 }
@@ -50,9 +49,9 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const projectDetails = [
     { label: "Category", value: project.category },
-    { label: "Year", value: project.year },
+    { label: "Timeline", value: project.year },
     { label: "Scope", value: project.scope },
-    ...(project.client ? [{ label: "Client", value: project.client }] : []),
+    ...(project.client ? [{ label: "Research Affiliation", value: project.client }] : []),
     ...(project.location ? [{ label: "Location", value: project.location }] : []),
   ];
 
@@ -91,10 +90,10 @@ export default async function ProjectDetailPage({ params }: Props) {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  More Work
+                  More Research
                 </p>
                 <h2 className="text-2xl font-bold tracking-tight text-foreground lg:text-3xl">
-                  Related Projects
+                  Related Research Studies
                 </h2>
               </div>
               <Link
@@ -135,22 +134,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </section>
       )}
-
-      {/* Final CTA */}
-      <Cta41
-        heading="Have a Similar Project in Mind?"
-        description="Let's connect to discuss architecture, development, or consulting opportunities."
-        buttons={{
-          primary: {
-            text: "Get in Touch",
-            url: "/contact",
-          },
-          secondary: {
-            text: "Browse All Projects",
-            url: "/projects",
-          },
-        }}
-      />
     </main>
   );
 }
