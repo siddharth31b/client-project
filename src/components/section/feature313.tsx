@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
-import { Button } from "@/vendors/ui/button";
 import { Card } from "@/vendors/ui/card";
 import { BorderGlow } from "./BorderGlow";
 import {
@@ -128,51 +127,64 @@ const Feature313 = ({
 
         {/* Video Container */}
         <Dialog>
-          <DialogTrigger render={<motion.div className="group relative aspect-video min-h-72 cursor-pointer overflow-hidden rounded-lg" whileHover="hover" initial="initial" />}><motion.div
-                                  className="absolute inset-0"
-                                  variants={{
-                                    initial: { filter: "blur(0px)" },
-                                    hover: { filter: "blur(4px)" },
-                                  }}
-                                  transition={{ duration: 0.3, ease: "easeOut" }}
-                                >
-                                  <motion.img
-                                    src={imageSrc}
-                                    alt={imageAlt}
-                                    className="h-full w-full rounded-lg object-cover"
-                                    variants={{
-                                      initial: { scale: 1 },
-                                      hover: { scale: 1.1 },
-                                    }}
-                                    transition={{ duration: 0.3, ease: "easeOut" }}
-                                  />
-                                </motion.div><div className="bg-opacity-20 absolute inset-0 flex items-center justify-center">
-                                  <motion.div
-                                    className="flex flex-col items-center justify-center gap-2 md:flex-row"
-                                    variants={{
-                                      initial: { gap: "0.5rem" },
-                                      hover: { gap: "0rem" },
-                                    }}
-                                    transition={{ duration: 0.3, ease: "easeOut" }}
-                                  >
-                                    <motion.div
-                                      variants={{
-                                        initial: { x: 0, scale: 1 },
-                                        hover: {
-                                          x: isMobile ? 0 : "75%",
-                                          scale: 1.2,
-                                        },
-                                      }}
-                                      transition={{ duration: 0.3, ease: "easeOut" }}
-                                    >
-                                      <Button
-                                        size="lg"
-                                        className="h-14 w-14 rounded-full bg-secondary hover:bg-secondary lg:h-20 lg:w-20"
-                                      >
-                                        <Play className="ml-0.5 size-5 text-primary md:size-7" />
-                                        <span className="sr-only">{videoCaption}</span>
-                                      </Button>
-                                    </motion.div>
+          <DialogTrigger
+            nativeButton={false}
+            render={
+              <motion.div
+                role="button"
+                tabIndex={0}
+                aria-label={videoCaption}
+                className="group relative aspect-video min-h-72 w-full cursor-pointer overflow-hidden rounded-lg focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
+                whileHover="hover"
+                initial="initial"
+              />
+            }
+          >
+            <motion.div
+              className="absolute inset-0"
+              variants={{
+                initial: { filter: "blur(0px)" },
+                hover: { filter: "blur(4px)" },
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              <motion.img
+                src={imageSrc}
+                alt={imageAlt}
+                className="h-full w-full rounded-lg object-cover"
+                variants={{
+                  initial: { scale: 1 },
+                  hover: { scale: 1.1 },
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              />
+            </motion.div>
+            <div className="bg-opacity-20 absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="flex flex-col items-center justify-center gap-2 md:flex-row"
+                variants={{
+                  initial: { gap: "0.5rem" },
+                  hover: { gap: "0rem" },
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <motion.div
+                  variants={{
+                    initial: { x: 0, scale: 1 },
+                    hover: {
+                      x: isMobile ? 0 : "75%",
+                      scale: 1.2,
+                    },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  <div
+                    className="inline-flex h-14 w-14 lg:h-20 lg:w-20 items-center justify-center rounded-full bg-secondary text-primary shadow-lg transition-transform group-hover:scale-105"
+                  >
+                    <Play className="ml-0.5 size-5 md:size-7 fill-current" />
+                    <span className="sr-only">{videoCaption}</span>
+                  </div>
+                </motion.div>
 
                                     <motion.div
                                       className="text-center md:text-left"
