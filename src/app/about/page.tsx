@@ -58,7 +58,11 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Personal / Professional Overview */}
-      <About20 className="py-16 lg:py-24" />
+      <About20
+        heading="Academic Biography"
+        eyebrow="Profile & Background"
+        className="py-16 lg:py-24"
+      />
 
       {/* 3. Core Focus / Capabilities / Technical Philosophy */}
       <Feature313 />
