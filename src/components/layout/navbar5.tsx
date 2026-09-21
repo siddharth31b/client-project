@@ -19,7 +19,7 @@ import {
   Mail,
 } from "lucide-react";
 
-import { Button, buttonVariants } from "@/vendors/ui/button";
+import { Button } from "@/vendors/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import {
   Sheet,
@@ -157,10 +157,12 @@ const Navbar5 = ({ className }: Navbar5Props) => {
   const navRef = useRef<HTMLElement | null>(null);
 
   // Close dropdown on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setOpenDropdown(null);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   // Click outside to close dropdown
   useEffect(() => {

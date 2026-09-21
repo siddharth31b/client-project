@@ -42,7 +42,7 @@ export interface UserProfile10Props {
 
 const defaultUser: UserProfileData = {
   name: "Subhash Chandra Pal",
-  designation: "Postdoctoral Researcher",
+  designation: "Post Doctoral Fellow",
   focus: "AI for Neurovascular Imaging and Clinical Insight",
   institution: "IIT Mandi iHUB and HCI Foundation",
   department: "Department of IT",

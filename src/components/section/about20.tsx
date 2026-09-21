@@ -26,7 +26,7 @@ interface AboutSignatureProps {
   className?: string;
 }
 
-interface About20Props extends AboutSignatureProps {}
+type About20Props = AboutSignatureProps;
 type Props = Partial<About20Props>;
 
 const defaultProps: About20Props = {

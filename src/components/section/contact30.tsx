@@ -88,14 +88,20 @@ const Contact30 = ({
       if (onSubmit) {
         await onSubmit(data);
       } else {
-        console.log("Form submitted:", data);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Frontend-only portfolio: launch default email client with pre-filled subject and body
+        const subject = encodeURIComponent(`Academic Inquiry from ${data.name}`);
+        const body = encodeURIComponent(
+          `Name: ${data.name}\nEmail: ${data.email}${data.phone ? `\nPhone: ${data.phone}` : ""}\n\nMessage:\n${data.message}`
+        );
+        if (typeof window !== "undefined") {
+          window.location.assign(`mailto:${email}?subject=${subject}&body=${body}`);
+        }
       }
       setIsSubmitted(true);
       setShowSuccess(true);
       form.reset();
-      setTimeout(() => setShowSuccess(false), 4500);
-      setTimeout(() => setIsSubmitted(false), 5000);
+      setTimeout(() => setShowSuccess(false), 5500);
+      setTimeout(() => setIsSubmitted(false), 6000);
     } catch {
       form.setError("root", {
         message: "Something went wrong. Please try again.",
@@ -226,14 +232,25 @@ const Contact30 = ({
               {isSubmitted && (
                 <div
                   className={cn(
-                    "mb-6 flex items-center gap-2.5 rounded-lg border border-green-500/20 bg-green-500/10 p-4 transition-opacity duration-500",
+                    "mb-6 flex items-start gap-2.5 rounded-lg border border-primary/20 bg-primary/5 p-4 transition-opacity duration-500",
                     showSuccess ? "opacity-100" : "opacity-0",
                   )}
                 >
-                  <CheckCircle2 className="size-5 text-green-500 shrink-0" />
-                  <p className="text-sm font-medium text-green-600 dark:text-green-400">
-                    Thank you! Your message has been sent successfully.
-                  </p>
+                  <CheckCircle2 className="size-5 text-primary shrink-0 mt-0.5" />
+                  <div className="text-sm space-y-1">
+                    <p className="font-semibold text-foreground">
+                      Inquiry prepared in your email client
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Your default email application has been launched with your inquiry details. If it did not open automatically, you can write directly to{" "}
+                      <a
+                        href={`mailto:${email}`}
+                        className="font-medium text-primary underline underline-offset-2 hover:text-primary/80"
+                      >
+                        {email}
+                      </a>.
+                    </p>
+                  </div>
                 </div>
               )}
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
-import { Card } from "@/vendors/ui/card";
+
 import { BorderGlow } from "./BorderGlow";
 import {
   Dialog,

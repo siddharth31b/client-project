@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, Brain, Dna, Eye, HeartPulse, Layers, Microscope, Scan, Stethoscope } from "lucide-react";
+import { Brain } from "lucide-react";
+
 
 const ROW1 = [
   { label: "MRA Image Analysis" },

@@ -22,7 +22,7 @@ interface CtaSimpleProps {
   className?: string;
 }
 
-interface Cta41Props extends CtaSimpleProps {}
+type Cta41Props = CtaSimpleProps;
 type Props = Partial<Cta41Props>;
 
 const defaultProps: Cta41Props = {
