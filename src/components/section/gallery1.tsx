@@ -175,7 +175,7 @@ const Gallery1 = ({
       <section className={cn("py-12 lg:py-16", className)}>
         <div className="container">
           {/* DESKTOP VIEW: Horizontal Expandable Gallery (lg: and above) */}
-          <div className="hidden lg:flex flex-row gap-4 xl:gap-5 lg:aspect-1336/440">
+          <div className="hidden lg:flex flex-row gap-4 xl:gap-5 lg:min-h-[470px] lg:h-[490px]">
             {filteredItems.map((item) => {
               const isOpen = selection === item.id;
               return (

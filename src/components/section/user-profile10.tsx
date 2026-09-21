@@ -58,7 +58,7 @@ const UserProfile10 = ({ user = defaultUser, className }: UserProfile10Props) =>
   return (
     <Card
       className={cn(
-        "w-full max-w-[340px] sm:max-w-[350px] overflow-hidden pt-0 shadow-lg border border-border/50 bg-card transition-all duration-300 hover:shadow-xl",
+        "w-full max-w-[350px] sm:max-w-[370px] overflow-hidden pt-0 shadow-lg border border-border/50 bg-card transition-all duration-300 hover:shadow-xl",
         className,
       )}
     >
