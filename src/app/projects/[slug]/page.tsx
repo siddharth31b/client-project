@@ -113,6 +113,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   className="group block rounded-xl border border-border/50 bg-card p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-md"
                 >
                   <div className="mb-4 aspect-[16/9] w-full overflow-hidden rounded-lg bg-muted">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={p.image}
                       alt={p.title}

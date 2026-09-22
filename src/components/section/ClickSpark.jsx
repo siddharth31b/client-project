@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useEffect, useCallback, useState } from 'react';
+import { useRef, useEffect, useCallback, useSyncExternalStore } from 'react';
 import { useTheme } from 'next-themes';
+
+const emptySubscribe = () => () => {};
 
 /**
  * @param {{
@@ -29,11 +31,11 @@ const ClickSpark = ({
   const sparksRef = useRef([]);
   const startTimeRef = useRef(null);
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const getThemeColor = useCallback(() => {
     if (sparkColor) return sparkColor;

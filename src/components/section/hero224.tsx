@@ -14,13 +14,15 @@ interface Hero224Props {
   className?: string;
 }
 
+const emptySubscribe = () => () => {};
+
 const Hero224 = ({ className }: Hero224Props) => {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const isDark = mounted ? resolvedTheme !== "light" : true;
 

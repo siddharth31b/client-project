@@ -6,6 +6,8 @@ import { useTheme } from "next-themes";
 import { Button } from "@/vendors/ui/button";
 import { cn } from "@/lib/utils";
 
+const emptySubscribe = () => () => {};
+
 export function ThemeToggle({
   className = "",
   showLabel = false,
@@ -14,11 +16,11 @@ export function ThemeToggle({
   showLabel?: boolean;
 }) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
   const isDark = mounted ? resolvedTheme === "dark" : false;
 

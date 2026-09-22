@@ -297,12 +297,7 @@ export default function ShapeWaves({
   const rootRef = useRef(null);
   const canvasRef = useRef(null);
   const [ready, setReady] = useState(false);
-  const settingsRef = useRef(null);
-  const applySettingsRef = useRef(() => {});
-  const applyMaskRef = useRef(() => {});
-  const onErrorRef = useRef(onError);
-
-  settingsRef.current = {
+  const currentSettings = {
     text: String(text ?? ''),
     fontFamily,
     fontWeight,
@@ -329,7 +324,16 @@ export default function ShapeWaves({
     introKey,
     paused
   };
-  onErrorRef.current = onError;
+
+  const settingsRef = useRef(currentSettings);
+  const applySettingsRef = useRef(() => {});
+  const applyMaskRef = useRef(() => {});
+  const onErrorRef = useRef(onError);
+
+  useEffect(() => {
+    settingsRef.current = currentSettings;
+    onErrorRef.current = onError;
+  });
 
   const settingsSignature = [
     shapes,

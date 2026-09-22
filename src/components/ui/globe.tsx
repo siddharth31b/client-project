@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { useTheme } from "next-themes";
+
+const emptySubscribe = () => () => {};
 
 export interface ArcData {
   startLat: number;
@@ -123,13 +125,9 @@ export function Globe({
   const countriesDataRef = useRef<any>(null);
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Function to apply theme-specific materials, colors, and lighting
   const applyTheme = (darkMode: boolean) => {

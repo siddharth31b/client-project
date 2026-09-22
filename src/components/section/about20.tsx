@@ -128,6 +128,7 @@ const About20 = (props: Props) => {
                 </p>
               )}
               {signature && (
+                /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={signature.src}
                   alt={signature.alt}
